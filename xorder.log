@@ -1,0 +1,74 @@
+2019-01-10 10:44:17.799  INFO 18048 --- [restartedMain] com.oretail.xorder.XorderApplication     : Starting XorderApplication on DESKTOP-TNOE6CS with PID 18048 (C:\Users\sk111\Desktop\Spring\xorder\target\classes started by sk111 in C:\Users\sk111\Desktop\Spring\xorder)
+2019-01-10 10:44:17.800  INFO 18048 --- [restartedMain] com.oretail.xorder.XorderApplication     : No active profile set, falling back to default profiles: default
+2019-01-10 10:44:18.017  INFO 18048 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-01-10 10:44:18.021  INFO 18048 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4ms. Found 0 repository interfaces.
+2019-01-10 10:44:18.062  INFO 18048 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$373c1bf6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-10 10:44:18.127  INFO 18048 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2019-01-10 10:44:18.128  INFO 18048 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-01-10 10:44:18.128  INFO 18048 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2019-01-10 10:44:18.136  INFO 18048 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-01-10 10:44:18.136  INFO 18048 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 334 ms
+2019-01-10 10:44:18.240  INFO 18048 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-40 - Starting...
+2019-01-10 10:44:18.251  INFO 18048 --- [restartedMain] com.zaxxer.hikari.pool.PoolBase          : HikariPool-40 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+2019-01-10 10:44:18.252  INFO 18048 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-40 - Start completed.
+2019-01-10 10:44:18.257  INFO 18048 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-01-10 10:44:18.263  INFO 18048 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2019-01-10 10:44:18.266  INFO 18048 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [byte[]] overrides previous : org.hibernate.type.BinaryType@21500833
+2019-01-10 10:44:18.267  INFO 18048 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [[B] overrides previous : org.hibernate.type.BinaryType@21500833
+2019-01-10 10:44:18.267  INFO 18048 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [Byte[]] overrides previous : org.hibernate.type.WrapperBinaryType@73cf68ed
+2019-01-10 10:44:18.267  INFO 18048 --- [restartedMain] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [[Ljava.lang.Byte;] overrides previous : org.hibernate.type.WrapperBinaryType@73cf68ed
+2019-01-10 10:44:18.287  INFO 18048 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-01-10 10:44:18.344  INFO 18048 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3330dc7f, org.springframework.security.web.context.SecurityContextPersistenceFilter@37b5287e, org.springframework.security.web.header.HeaderWriterFilter@6348d66, org.springframework.security.web.authentication.logout.LogoutFilter@2d58e772, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5cb8b356, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7e454a1a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2a0bfb4c, org.springframework.security.web.session.SessionManagementFilter@13a80ccc, org.springframework.security.web.access.ExceptionTranslationFilter@317b53a5]
+2019-01-10 10:44:18.379  INFO 18048 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-01-10 10:44:18.383  WARN 18048 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-01-10 10:44:18.460  INFO 18048 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 17 endpoint(s) beneath base path '/actuator'
+2019-01-10 10:44:18.476  INFO 18048 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-01-10 10:44:18.492  INFO 18048 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2019-01-10 10:44:18.493  INFO 18048 --- [restartedMain] com.oretail.xorder.XorderApplication     : Started XorderApplication in 0.726 seconds (JVM running for 5838.127)
+2019-01-10 10:44:18.500  INFO 18048 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   LogFileWebEndpointAutoConfiguration#logFileWebEndpoint matched:
+      - Log File found logging.file xorder.log (LogFileWebEndpointAutoConfiguration.LogFileCondition)
+      - @ConditionalOnMissingBean (types: org.springframework.boot.actuate.logging.LogFileWebEndpoint; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+Negative matches:
+-----------------
+
+    None
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2019-01-10 10:44:27.423  INFO 18048 --- [http-nio-8090-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-01-10 10:44:27.424  INFO 18048 --- [http-nio-8090-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-01-10 10:44:27.428  INFO 18048 --- [http-nio-8090-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2019-01-10 10:44:27.433  INFO 18048 --- [http-nio-8090-exec-3]                                          : creating order
+2019-01-10 10:44:27.444  INFO 18048 --- [http-nio-8090-exec-3]                                          : Order building successful
+2019-01-10 10:44:27.445  INFO 18048 --- [http-nio-8090-exec-3]                                          : Config file:null
+2019-01-10 10:45:54.219  INFO 18048 --- [Thread-451] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-01-10 10:45:54.220  INFO 18048 --- [Thread-451] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-01-10 10:45:54.220  INFO 18048 --- [Thread-451] com.zaxxer.hikari.HikariDataSource       : HikariPool-40 - Shutdown initiated...
+2019-01-10 10:45:54.224  INFO 18048 --- [Thread-451] com.zaxxer.hikari.HikariDataSource       : HikariPool-40 - Shutdown completed.
