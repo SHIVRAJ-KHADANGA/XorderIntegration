@@ -42,7 +42,7 @@ public class XorderServiceImpl implements XorderService {
 	@Override
 	@Transactional
 	public void createOrder(XorderEntity theOrder) {
-		LOGGER.info("Order building starts with details:"+theOrder);
+		LOGGER.info("Order building starts with the details:"+theOrder);
 		xorderDao.save(theOrder);
 		LOGGER.info("Order saved to staging table with order_no:"+theOrder.getOrderNo());
 		LOGGER.info("Calling store proc for database operations");
