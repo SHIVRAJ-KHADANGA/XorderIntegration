@@ -20,7 +20,7 @@ import com.oretail.xorder.rest.exeception.XorderCustomException;
 import com.oretail.xorder.service.XorderService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/xorder")
 public class XorderRestController {
 
    @Autowired
