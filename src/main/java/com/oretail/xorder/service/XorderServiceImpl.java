@@ -44,7 +44,7 @@ public class XorderServiceImpl implements XorderService {
 	public void createOrder(XorderEntity theOrder) {
 		LOGGER.info("Order building starts with the details:"+theOrder);
 		xorderDao.save(theOrder);
-		LOGGER.info("Order saved to staging table with order_no:"+theOrder.getOrderNo());
+		LOGGER.info("Order saved to staging tables with order_no:"+theOrder.getOrderNo());
 		LOGGER.info("Calling store proc for database operations");
 		xorderDao.buildOrder(theOrder.getOrderNo());
 	}
