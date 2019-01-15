@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-
+    //This is used for allowing post requests for resource creation without csrf token
     @Override
     public void configure(HttpSecurity http) throws Exception {
     	http.csrf().disable();
