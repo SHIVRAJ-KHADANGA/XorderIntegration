@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,15 +23,12 @@ public class XorderRestController {
 
    @Autowired
    private XorderService xorderService;
-   
-   private static final Logger LOGGER = LogManager.getRootLogger();
+
 
 	@GetMapping("/orders")
 	public List<XorderEntity> findAll() {
 		return xorderService.findAll();
 	}
-
-	// add mapping for GET /employees/{employeeId}
 
 	@GetMapping("/orders/{orderId}")
 	public XorderEntity findOrderbyId(@PathVariable int orderId) {
@@ -53,13 +48,10 @@ public class XorderRestController {
 		return xorderService.findOrdersbyItem(itemId);
 	}
 
-	// add mapping for POST /employees - add new employee
+	
 
 	@PostMapping("/orders")
 	public XorderEntity createOrder(@Valid @RequestBody XorderEntity theOrder) {
-
-		// also just in case they pass an id in JSON ... set id to 0
-		// this is to force a save of new item ... instead of update
 		
 		if(theOrder.getItems()==null)
 			throw new XorderCustomException("Order has no items");
