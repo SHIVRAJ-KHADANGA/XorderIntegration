@@ -22,7 +22,7 @@ public class XorderJmsAMQListener {
 		
 	@JmsListener(destination = XorderConstants.destinationQueue)
 	public void receiveMessage(XorderEntity theOrder) throws JMSException {
-		LOGGER.info("Xorder create message received by JMS listener : "+theOrder);
+		LOGGER.info("Xorder create message received by JMS listener method : "+theOrder);
 		xorderService.createOrder(theOrder);
 		
 	}

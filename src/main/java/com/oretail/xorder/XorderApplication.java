@@ -7,6 +7,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
+import org.springframework.jms.support.converter.MessageConverter;
+import org.springframework.jms.support.converter.MessageType;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.WebApplicationInitializer;
 
@@ -35,6 +38,14 @@ public class XorderApplication extends SpringBootServletInitializer implements W
 		LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
 		bean.setValidationMessageSource(messageSource());
 		return bean;
+	}
+	
+	@Bean // Serialize message content to json using TextMessage
+	public MessageConverter jacksonJmsMessageConverter() {
+	    MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
+	    converter.setTargetType(MessageType.TEXT);
+	    converter.setTypeIdPropertyName("_type");
+	    return converter;
 	}
 
 

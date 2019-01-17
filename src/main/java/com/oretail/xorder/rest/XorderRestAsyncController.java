@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
@@ -20,6 +21,8 @@ import com.oretail.xorder.entity.XorderEntity;
 import com.oretail.xorder.response.XorderCustomResponse;
 import com.oretail.xorder.rest.exeception.XorderCustomException;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/async/xorder")
 public class XorderRestAsyncController {
@@ -28,6 +31,7 @@ public class XorderRestAsyncController {
 	JmsTemplate jmsTemplate;
 	
 	@PostMapping("/orders")
+	@ApiOperation(value = "Async Order Build", response = ResponseEntity.class,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<XorderCustomResponse> createOrder(@Valid @RequestBody XorderEntity theOrder) {
 
 		// also just in case they pass an id in JSON ... set id to 0
@@ -44,15 +48,4 @@ public class XorderRestAsyncController {
 		return  new ResponseEntity<>(response,HttpStatus.ACCEPTED);
 	}
 	
-	@Bean // Serialize message content to json using TextMessage
-	public MessageConverter jacksonJmsMessageConverter() {
-	    MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
-	    converter.setTargetType(MessageType.TEXT);
-	    converter.setTypeIdPropertyName("_type");
-	    return converter;
-	}
-	
-	
-	
-
 }
