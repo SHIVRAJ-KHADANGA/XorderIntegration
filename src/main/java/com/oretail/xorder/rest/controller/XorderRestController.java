@@ -33,14 +33,13 @@ public class XorderRestController {
 
 	@GetMapping("/orders")
 	@ApiOperation(value = "Get All The Orders",response = XorderEntity.class, responseContainer="List",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<XorderEntity> findAll() {
+	public List<XorderEntity> findAll(@RequestHeader HttpHeaders httpHeaders) {
 		return xorderService.findAll();
 	}
 
 	@GetMapping(value= {"order","/order/{orderId}"})
 	@ApiOperation(value = "Get An Order By OrderId - DEF ORD 1083", response = XorderEntity.class,produces = MediaType.APPLICATION_JSON_VALUE)
-	public XorderEntity findOrderbyId(@PathVariable Optional<Integer> orderId,/*@RequestHeader(value="ACCEPT-VERSION",required=true) BigDecimal acceptVersion*/
-			@RequestHeader HttpHeaders headers) {
+	public XorderEntity findOrderbyId(@PathVariable Optional<Integer> orderId,@RequestHeader HttpHeaders httpHeaders) {
 		XorderEntity theOrder;
 		if(orderId.isPresent()) {
 			 theOrder = xorderService.findOrderbyId(orderId.get());
@@ -58,7 +57,7 @@ public class XorderRestController {
 
 	@GetMapping("/orders/item/{itemId}")
 	@ApiOperation(value = "Get All Orders By ItemId", response = XorderEntity.class, responseContainer="List",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<XorderEntity> findOrdersbyItem(@PathVariable String itemId) {
+	public List<XorderEntity> findOrdersbyItem(@PathVariable String itemId,@RequestHeader HttpHeaders httpHeaders) {
 
 		return xorderService.findOrdersbyItem(itemId);
 	}
@@ -67,7 +66,7 @@ public class XorderRestController {
 
 	@PostMapping("/orders")
 	@ApiOperation(value = "Sync Order Build", response = XorderEntity.class,consumes = MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-	public XorderEntity createOrder(@Valid @RequestBody XorderEntity theOrder) {
+	public XorderEntity createOrder(@Valid @RequestBody XorderEntity theOrder,@RequestHeader HttpHeaders httpHeaders) {
 		
 		if(theOrder.getItems()==null)
 			throw new XorderCustomException("Order has no items");
@@ -81,7 +80,7 @@ public class XorderRestController {
 	
 	@PutMapping("/orders")
 	@ApiOperation(value = "Sync Order Build By PUT", response = XorderEntity.class,consumes = MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-	public XorderEntity updateOrder(@RequestBody XorderEntity theOrder) {
+	public XorderEntity updateOrder(@RequestBody XorderEntity theOrder,@RequestHeader HttpHeaders httpHeaders) {
 
 		xorderService.createOrder(theOrder);
 

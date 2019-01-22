@@ -40,8 +40,8 @@ public class XorderHTTPReqHeaderCheck {
 				// downcast and print Account specific stuff
 				 headers = (HttpHeaders) tempArg;		
 			     List<String> headerStrs = headers.get("ACCEPT-VERSION");
-			     if(headerStrs.size() == 0 || headerStrs.size() > 1) {
-			    	 throw new RuntimeException("ACCEPT-VERSION header is required and unique");
+			     if(headerStrs == null) {
+			    	 throw new RuntimeException("ACCEPT-VERSION header is required");
 			     }
 			     else if(headerStrs.get(0).compareTo("1.0")!=0) {
 			    	 throw new RuntimeException("Incompatible ACCEPT-VERSION : "+headerStrs.get(0));
