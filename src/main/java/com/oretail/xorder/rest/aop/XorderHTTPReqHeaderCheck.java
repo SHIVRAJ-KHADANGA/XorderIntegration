@@ -39,12 +39,12 @@ public class XorderHTTPReqHeaderCheck {
 				
 				// downcast and get needed header value
 				 headers = (HttpHeaders) tempArg;		
-			     List<String> headerStrs = headers.get("ACCEPT-VERSION");
+			     List<String> headerStrs = headers.get("Accept-Version");
 			     if(headerStrs == null) {
-			    	 throw new RuntimeException("ACCEPT-VERSION header is required");
+			    	 throw new RuntimeException("Accept-Version header is required");
 			     }
 			     else if(headerStrs.get(0).compareTo("1.0")!=0) {
-			    	 throw new RuntimeException("Incompatible ACCEPT-VERSION : "+headerStrs.get(0));
+			    	 throw new RuntimeException("Incompatible Accept-Version : "+headerStrs.get(0));
 			     }
 			}
 		}
