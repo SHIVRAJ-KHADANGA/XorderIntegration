@@ -21,18 +21,19 @@ public class SwaggerConfig {
 				.select()
 				.apis(RequestHandlerSelectors.basePackage("com.oretail.xorder.rest"))
 				.paths(PathSelectors.any())
-				.build();
-				//.apiInfo(metaData());
+				.build()
+				.apiInfo(metaData());
 	}
-
-	private ApiInfo metaData() {
+    
+	@Bean
+	public ApiInfo metaData() {
 
 		ApiInfo apiInfo = new ApiInfo(
 				"Spring Boot REST API",
 				"Spring Boot REST API for Xorders",
 				"1.0",
 				"Terms of service",
-				new Contact("Shivraj Khadanga", "https://springframework.guru/about/", "Sk@gmail.com"),
+				new Contact("Shivraj Khadanga", "https://swagger.io/docs/specification/about/", "shivrajkhadanga@gmail.com"),
 				"Apache License Version 2.0",
 				"https://www.apache.org/licenses/LICENSE-2.0");
 

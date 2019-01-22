@@ -1,16 +1,19 @@
-package com.oretail.xorder.rest;
+package com.oretail.xorder.rest.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,11 +37,17 @@ public class XorderRestController {
 		return xorderService.findAll();
 	}
 
-	@GetMapping("/orders/{orderId}")
-	@ApiOperation(value = "Get An Order By OrderId", response = XorderEntity.class,produces = MediaType.APPLICATION_JSON_VALUE)
-	public XorderEntity findOrderbyId(@PathVariable int orderId) {
-
-		XorderEntity theOrder = xorderService.findOrderbyId(orderId);
+	@GetMapping(value= {"order","/order/{orderId}"})
+	@ApiOperation(value = "Get An Order By OrderId - DEF ORD 1083", response = XorderEntity.class,produces = MediaType.APPLICATION_JSON_VALUE)
+	public XorderEntity findOrderbyId(@PathVariable Optional<Integer> orderId,/*@RequestHeader(value="ACCEPT-VERSION",required=true) BigDecimal acceptVersion*/
+			@RequestHeader HttpHeaders headers) {
+		XorderEntity theOrder;
+		if(orderId.isPresent()) {
+			 theOrder = xorderService.findOrderbyId(orderId.get());
+			
+		}else {
+			 theOrder = xorderService.findOrderbyId(1083);
+		}
 
 		if (theOrder == null) {
 			throw new XorderCustomException("Order id not found - " + orderId);
