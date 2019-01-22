@@ -37,7 +37,7 @@ public class XorderHTTPReqHeaderCheck {
 			
 			if (tempArg instanceof HttpHeaders) {
 				
-				// downcast and print Account specific stuff
+				// downcast and get needed header value
 				 headers = (HttpHeaders) tempArg;		
 			     List<String> headerStrs = headers.get("ACCEPT-VERSION");
 			     if(headerStrs == null) {
