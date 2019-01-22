@@ -13,7 +13,7 @@ import org.springframework.http.HttpHeaders;
 
 @Configuration
 @Aspect
-public class XorderHTTPReqHeaderCheck {
+public class XorderControllerIntercept {
 	private static final Logger LOGGER = LogManager.getRootLogger();
 	
 	@Before("com.oretail.xorder.rest.aop.XorderPointCuts.forRestControllers()")
