@@ -1,13 +1,11 @@
-#Run-config = <mvn> spring-boot:run -Dspring-boot.run.profiles=prod
-spring.profiles.active=dev
-spring.devtools.add-properties=false
 server.port = 8090
-server.servlet.context-path=/api
+spring.profiles.active=prod
 
 #
 # JDBC properties
 #
 #spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
+server.servlet.context-path=/api
 
 spring.datasource.url=jdbc:oracle:thin:@localhost:1521:XE
 spring.datasource.username=ADF_USER
@@ -19,8 +17,8 @@ spring.datasource.hikari.maximum-pool-size=12
 spring.datasource.hikari.idle-timeout=300000
 spring.datasource.hikari.max-lifetime=1200000 
 
-spring.security.user.name=rms
-spring.security.user.password=rms
+security.user.name=rms
+security.user.password=rms
 
 spring.jpa.show-sql=true
 

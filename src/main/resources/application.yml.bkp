@@ -1,0 +1,83 @@
+name: dev-YAML
+spring:
+   profile: dev
+   datasource: 
+      url: jdbc:oracle:thin:@localhost:1521:XE
+      username: ADF_USER
+      password: adf_user
+      hikari:
+          connection-timeout: "20000"
+          minimum-idle: "5"
+          maximum-pool-size: "12"
+          idle-timeout: "300000"
+          max-lifetime: "1200000 "
+      security:
+        user:
+          name: rms
+          password: rms
+      jpa:
+        show-sql: "true"
+      activemq:
+        user: admin
+        password: admin
+        broker-url: tcp://localhost:61616
+management:
+   endpoints:
+        enabled-by-default: "true"
+        sensitive: "false"
+        enabled: "true"
+        web:
+          exposure:
+            include: '*'
+   endpoint:
+        configprops:
+          enabled: "true"
+        beans:
+          enabled: "true"
+        shutdown:
+          enabled: "true"
+logging:
+   file: d:/xorder.log
+---
+name: prod-YAML
+spring:
+   profile: prod
+   datasource: 
+      url: jdbc:oracle:thin:@localhost:1521:XE
+      username: ADF_USER
+      password: adf_user
+      hikari:
+          connection-timeout: "20000"
+          minimum-idle: "5"
+          maximum-pool-size: "12"
+          idle-timeout: "300000"
+          max-lifetime: "1200000 "
+      security:
+        user:
+          name: rmsp
+          password: rmsp
+      jpa:
+        show-sql: "true"
+      activemq:
+        user: admin
+        password: admin
+        broker-url: tcp://localhost:61616
+management:
+   endpoints:
+        enabled-by-default: "true"
+        sensitive: "false"
+        enabled: "true"
+        web:
+          exposure:
+            include: '*'
+   endpoint:
+        configprops:
+          enabled: "true"
+        beans:
+          enabled: "true"
+        shutdown:
+          enabled: "true"
+logging:
+   file: d:/xorder.log
+
+
