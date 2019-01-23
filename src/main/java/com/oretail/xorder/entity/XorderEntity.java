@@ -17,8 +17,13 @@ import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 @Entity
 @Table(name="xorder_stg")
+@JacksonXmlRootElement(localName = "order")
 public class XorderEntity {
 	
 	@Id
@@ -33,6 +38,8 @@ public class XorderEntity {
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH,CascadeType.REMOVE})
 	@JoinColumn(name="order_no")
+	@JacksonXmlProperty(localName = "item")
+	@JacksonXmlElementWrapper(localName = "items")
 	private List<@Valid XorderItemEntity> items;
 	
 	public XorderEntity() {

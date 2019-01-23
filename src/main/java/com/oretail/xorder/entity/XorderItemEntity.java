@@ -8,10 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Positive;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 
 @Entity
 @Table(name = "xorder_item_stg")
+@JacksonXmlRootElement(localName = "item")
 public class XorderItemEntity {
 
 	@Id
@@ -21,9 +24,11 @@ public class XorderItemEntity {
 	private int id;
 
 	@Column(name = "item")
+	@JacksonXmlProperty(localName = "item_id")
 	private String item;
 
 	@Column(name = "qty")
+	@JacksonXmlProperty(localName = "units")
 	@Positive(message="{Positive.xorderItemEntity.qty}")
 	private int qty;
     
