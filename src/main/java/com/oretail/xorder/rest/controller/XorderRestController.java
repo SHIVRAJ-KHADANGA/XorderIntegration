@@ -1,10 +1,13 @@
 package com.oretail.xorder.rest.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oretail.xorder.entity.XorderEntity;
@@ -26,22 +30,52 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/xorder")
 public class XorderRestController {
-
+	private static final Logger LOGGER = LogManager.getRootLogger();
    @Autowired
    private XorderService xorderService;
 
 
 	@GetMapping("/orders")
 	@ApiOperation(value = "Get All The Orders",response = XorderEntity.class, responseContainer="List",produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<XorderEntity> findAll(@RequestHeader HttpHeaders httpHeaders) {
-		return xorderService.findAll();
+	public List<XorderEntity> findAll(@RequestParam(value = "orderId", required = false) Integer orderId,
+			@RequestParam(value = "page", required = false) Integer page,
+			@RequestParam(value = "size", required = false) Integer size,
+			@RequestHeader HttpHeaders httpHeaders) {
+		List<XorderEntity> orderList;
+		LOGGER.info("Request Parameter orderId=====>" + orderId);
+		LOGGER.info("Request Parameter page=====>" + page);
+		LOGGER.info("Request Parameter size=====>" + size);
+		if(orderId == null)
+			orderList=xorderService.findAll();
+		else {
+			orderList =new ArrayList<XorderEntity>();
+			XorderEntity theOrder = xorderService.findOrderbyId(orderId);
+			if(theOrder!=null)
+				orderList.add(theOrder);
+		}
+			return orderList; 
+	}
+	
+	@GetMapping("/order")
+	@ApiOperation(value = "Get order by orderId as request param",response = XorderEntity.class,produces = MediaType.APPLICATION_JSON_VALUE)
+	public XorderEntity findByOrderId(@RequestParam(value = "orderId", required = true) Integer orderId,@RequestHeader HttpHeaders httpHeaders){
+		LOGGER.info("Request Parameter =====>" + orderId);
+		XorderEntity theOrder = xorderService.findOrderbyId(orderId);
+		
+		if (theOrder == null) {
+			throw new XorderCustomException("Order id not found - " + orderId);
+		}
+
+		return theOrder;
+	
 	}
 
-	@GetMapping(value= {"order","/order/{orderId}"})
-	@ApiOperation(value = "Get An Order By OrderId - DEF ORD 1083", response = XorderEntity.class,produces = MediaType.APPLICATION_JSON_VALUE)
-	public XorderEntity findOrderbyId(@PathVariable Optional<Integer> orderId,@RequestHeader HttpHeaders httpHeaders) {
+	@GetMapping("/order/{orderId}")
+	@ApiOperation(value = "Get An Order By OrderId as path variable - DEF ORD 1083", response = XorderEntity.class,produces = MediaType.APPLICATION_JSON_VALUE)
+	public XorderEntity findOrderbyId(@PathVariable("orderId") Optional<Integer> orderId,@RequestHeader HttpHeaders httpHeaders) {
 		XorderEntity theOrder;
 		if(orderId.isPresent()) {
+			 LOGGER.info("Path Variable =====>" + orderId.toString());
 			 theOrder = xorderService.findOrderbyId(orderId.get());
 			
 		}else {

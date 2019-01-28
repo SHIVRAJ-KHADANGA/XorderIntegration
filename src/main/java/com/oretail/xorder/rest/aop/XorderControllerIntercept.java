@@ -33,7 +33,8 @@ public class XorderControllerIntercept {
 		
 		// loop thru args
 		for (Object tempArg : args) {
-			LOGGER.info(tempArg.toString());
+			if(tempArg!=null)
+				LOGGER.info(tempArg.toString());
 			
 			if (tempArg instanceof HttpHeaders) {
 				
