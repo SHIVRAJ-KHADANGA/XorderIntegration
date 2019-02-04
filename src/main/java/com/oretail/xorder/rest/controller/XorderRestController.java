@@ -41,6 +41,8 @@ public class XorderRestController {
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "size", required = false) Integer size,
 			@RequestHeader HttpHeaders httpHeaders) {
+		if((page==null && size!=null) || (page!=null && size==null))
+			throw new XorderCustomException("Query parameters page and size can be both null or both not null");
 		List<XorderEntity> orderList;
 		LOGGER.info("Request Parameter orderId=====>" + orderId);
 		LOGGER.info("Request Parameter page=====>" + page);
